@@ -22,23 +22,9 @@ public class Main {
         Scanner teclado = new Scanner(System.in);
 
 
-//        NoTripulados noTripulados = new NoTripulados("julian", "12kg", "gasolina", 1200, true);
-//        NoTripuladosControlador noTripuladosControlador =
-//                new NoTripuladosControlador(noTripulados);
-//        noTripuladosControlador.abastecer("mg");
-//        noTripuladosControlador.aterrizar();
-
-        /*CoheteLanzadero coheteLanzadero = new CoheteLanzadero("fgg", "1234kg", "Quimico", "satelite", "2000cc", false);
-        coheteLanzadero.cargar("Asteroide");
-        coheteLanzadero.descargar();
-        coheteLanzadero.descargar();
-        coheteLanzadero.cargar("satelite");*/
         System.out.println("*******Nave Tripulada***********");
 
-//        NaveTripulada naveTripulada = new NaveTripulada("Arbey", "2300kg", "gasolina", "5");
-//        naveTripulada.mantenimiento("Marte");
-//        naveTripulada.investigacion("Marte");
-//        System.out.println("\n");
+
         System.out.println("**** Bienvenido al sistema ******");
         List<CoheteLanzadero> listNavesCoheteLanzadero = Inventario.cargarDatosCoheteLanzadero();
         List<NoTripulados> listNavesNoTripuladas = Inventario.cargarDatosNoTripulados();
@@ -90,11 +76,11 @@ public class Main {
                                             System.out.println("Ingrese el nombre de la carga");
                                             coheteLanzadero.cargar(teclado.next());
                                         }
-                                        listNavesCoheteLanzadero.add(coheteLanzadero);
-
 
                                     }
                                     break;
+//                                listNavesCoheteLanzadero.add(coheteLanzadero);
+
 
                                 case 2:
                                     for (int i = 0; i < canNaves; i++) {
@@ -135,116 +121,91 @@ public class Main {
 
                                     }
                                     break;
-
-
+                                default:
                             }
-
                         }
+
                     } while (opNave < 4);
-                    break;
+                 break;
                 case 2:
                     do {
                         System.out.println("Busqueda Naves");
                         System.out.println("1. Buscar todas las naves");
-                        System.out.println("2. Buscar por nombre");
-                        System.out.println("3. Buscar por peso");
-                        System.out.println("4. Buscar por combustible");
+                        System.out.println("2. Buscar Todas las naves tripuladas");
+                        System.out.println("3. Buscar Todas las naves Cohete Lanzadero");
+                        System.out.println("4. Buscar Todas las naves no tripuladas");
                         System.out.println("5. Volver");
 
-                         opBusqueda = teclado.nextInt();
+                        opBusqueda = teclado.nextInt();
 
-                        switch (opBusqueda){
+                        switch (opBusqueda) {
                             case 1:
-                                do{
-                                    System.out.println("1. Buscar todas las naves");
-                                    System.out.println("2. Buscar Todas las naves tripuladas");
-                                    System.out.println("3. Buscar Todas las naves Cohete Lanzadero");
-                                    System.out.println("4. Buscar Todas las naves no tripuladas");
-                                    System.out.println("5. Volver");
-
-                                    opcBuscar = teclado.nextInt();
-
-                                    switch (opcBuscar){
-                                        case 1:
-                                            if(!Buscar.buscar(listNavesCoheteLanzadero)){
-                                                System.out.println("No hay disponible cohetes lanzaderos");
-                                            }
-                                            if(!Buscar.buscar(listNavesNoTripuladas)){
-                                                System.out.println("No hay disponible nave no tripulada");
-                                            }
-                                            if(!Buscar.buscar(listNavesNaveTripuladas)){
-                                                System.out.println("No hay disponible naves tripuladas");
-                                            } break;
-                                        case 2:
-                                            if(!Buscar.buscar(listNavesNaveTripuladas)){
-                                                System.out.println("No hay disponible naves tripuladas");
-                                            } break;
-
-                                        case 3:
-                                            if(!Buscar.buscar(listNavesCoheteLanzadero)){
-                                                System.out.println("No hay disponible cohetes lanzaderos");
-                                            }break;
-
-                                        case 4:
-                                            if(!Buscar.buscar(listNavesNoTripuladas)){
-                                                System.out.println("No hay disponible nave no tripulada");
-                                            }break;
-                                    }
-                                }while (opcBuscar<5);
+                                if (!Buscar.buscar(listNavesCoheteLanzadero)) {
+                                    System.out.println("No hay disponible cohetes lanzaderos");
+                                }
+                                if (!Buscar.buscar(listNavesNoTripuladas)) {
+                                    System.out.println("No hay disponible nave no tripulada");
+                                }
+                                if (!Buscar.buscar(listNavesNaveTripuladas)) {
+                                    System.out.println("No hay disponible naves tripuladas");
+                                }
                                 break;
                             case 2:
-                                System.out.println("Ingrese el nombre a buscar");
-                                String nombre = teclado.next();
-                                do {
-                                    System.out.println("1. Buscar en todas las naves");
-                                    System.out.println("2. Buscar en Todas las naves tripuladas");
-                                    System.out.println("3. Buscar en Todas las naves Cohete Lanzadero");
-                                    System.out.println("4. Buscar en Todas las naves no tripuladas");
-                                    System.out.println("5. Volver");
+                                if (!Buscar.buscar(listNavesNaveTripuladas)) {
+                                    System.out.println("No hay disponible naves tripuladas");
+                                }
+                                break;
 
-                                    opcBuscar = teclado.nextInt();
-                                }while (opcBuscar<5);
+                            case 3:
+                                if (!Buscar.buscar(listNavesCoheteLanzadero)) {
+                                    System.out.println("No hay disponible cohetes lanzaderos");
+                                }
+                                break;
 
-
+                            case 4:
+                                if (!Buscar.buscar(listNavesNoTripuladas)) {
+                                    System.out.println("No hay disponible nave no tripulada");
+                                }
+                                break;
+                            default:
                         }
 
 
-                    }while (opBusqueda<5);
-
-
-
+                    break;
+                    }while (op < 5);
             }
 
-
-
-        } while (op <11);
+        }  while (op < 3) ;
 
     }
-
-    public static void buscarPorNombreCoheteLanzadero(List<CoheteLanzadero> list, String nombre){
-        if (list.isEmpty()){
-            System.out.println("No hay disponible cohetes lanzaderos");
-        }else{
-            for (int i=0; list.isEmpty();i++){
-                if(list.get(i).getNombre()==nombre) {
-                    System.out.println(list.get(0)+"\n");
-                }
-            }
-        }
-    }
-    public static void buscarPorNombreNoTripuladas(List<NoTripulados> list, String nombre){
-        if (list.isEmpty()){
-            System.out.println("No hay disponible cohetes lanzaderos");
-        }else{
-            for (int i=0; list.isEmpty();i++){
-                if(list.get(i).getNombre()==nombre) {
-                    System.out.println(list.get(0)+"\n");
-                }
-            }
-        }
-    }
-
-
-
 }
+
+
+
+
+//    public static void buscarPorNombreCoheteLanzadero(List<CoheteLanzadero> list, String nombre){
+//        if (list.isEmpty()){
+//            System.out.println("No hay disponible cohetes lanzaderos");
+//        }else{
+//            for (int i=0; list.isEmpty();i++){
+//                if(list.get(i).getNombre()==nombre) {
+//                    System.out.println(list.get(0)+"\n");
+//                }
+//            }
+//        }
+//    }
+//    public static void buscarPorNombreNoTripuladas(List<NoTripulados> list, String nombre){
+//        if (list.isEmpty()){
+//            System.out.println("No hay disponible cohetes lanzaderos");
+//        }else{
+//            for (int i=0; list.isEmpty();i++){
+//                if(list.get(i).getNombre()==nombre) {
+//                    System.out.println(list.get(0)+"\n");
+//                }
+//            }
+//        }
+//    }
+
+
+
 
